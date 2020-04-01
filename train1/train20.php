@@ -21,36 +21,13 @@ Description:
 
 */
 
-var_dump(nextHigher(1010110));
+var_dump(nextHigher(1));
 
 function nextHigher($n) {
-    $final = false;
-    if(is_null($n) || ctype_alpha ($n)){
-        return $final;
-    }else{
-
-    $base_10 = 0;
-    $doses = array();
-    $arreglo = str_split($n);
-    $result = array();
-
-
-    for ($i=0; $i < count($arreglo); $i++) {     
-        array_push($doses, pow(2,$i));
+    $z = $n+1;
+    $a = 0;
+    while ($a == 0) {
+        array_sum(str_split(base_convert($z, 10,2))) == array_sum(str_split(base_convert($n, 10,2))) ? $a = 1 : $z += 1;        
     }
-
-    rsort($doses);
-
-
-    for ($j=0; $j < count($arreglo); $j++) { 
-        array_push($result, $doses[$j]*$arreglo[$j]);
-    }
-
-    $base_10 = array_sum($result);
-    $retorno = false;
-
-    return $base_10;
-
-    }
-
+    return $z;
 }
